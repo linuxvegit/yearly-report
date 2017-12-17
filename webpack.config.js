@@ -35,6 +35,7 @@ module.exports = {
 
   module: {
     rules: [
+      // JS files
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
@@ -42,6 +43,22 @@ module.exports = {
         use: {
           loader: "babel-loader",
         }
+      },
+      // Image files
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
+      },
+      // Style files
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader'
+        ]
       }
     ]
   }
