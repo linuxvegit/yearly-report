@@ -1,4 +1,6 @@
 
 .idea/
-public/images/
+public/
 node_modules/
+
+*.log
