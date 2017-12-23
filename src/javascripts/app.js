@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDom from 'react-dom';
-import PicIcon from './PicIcon.js';
+import Container from './Container';
 
 ReactDom.render(
-    <PicIcon/>,
+    <Container/>,
     document.getElementById('root')
 );
