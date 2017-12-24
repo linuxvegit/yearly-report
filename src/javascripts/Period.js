@@ -7,32 +7,26 @@ import '../stylesheets/period.less';
 
 /**
  * Properties
- *
+ * {!Period} data
+ * {'top'|'bottom'} expandDirection
+ * {boolean} expand
+ * {string} lineWidth e.g. `50px` default '50px'
+ * {string} contentWidth e.g. `100px` default '500px'
+ * {string} contentHeight e.g. `200px` default '300px'
+ * {string} titleSize e.g. '25px'  default '28px'
  */
 export default class Period extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      timeExpand: '',
       timeExpanded: false,
       circleExpanded: false,
       textExpand: ''
     };
 
-    this.handleClick = this.handleClick.bind(this);
     this.handleTimeExpanded = this.handleTimeExpanded.bind(this);
     this.handleCircleExpanded = this.handleCircleExpanded.bind(this);
-  }
-
-  static getDefaultWidth() {
-    return '500px';
-  }
-
-  handleClick() {
-    this.setState({
-      timeExpand: this.getExpand()
-    });
   }
 
   handleTimeExpanded() {
@@ -47,30 +41,33 @@ export default class Period extends React.Component {
     if (!this.state.circleExpanded) {
       this.setState({
         circleExpanded: true,
-        textExpand: this.getExpand()
+        textExpand: this.getExpandDirection()
       });
     }
   }
 
   render() {
     return (
-        <div className={'period'} onClick={this.handleClick}>
-          <PeriodTime size={this.getTitleSize()} expand={this.state.timeExpand} color={Circle.getDefaultColor()}
-                      onExpanded={this.handleTimeExpanded} text={'test period'}>
+        <div className={'period'}>
+          <PeriodTime size={this.getTitleSize()} height={this.props.contentHeight}
+                      expand={this.props.expand ? this.getExpandDirection() : ''}
+                      color={this.props.data.getColor()} onExpanded={this.handleTimeExpanded}
+                      text={this.props.data.getTime()}>
 
-            {this.getExpand() === 'bottom' &&
+            {this.getExpandDirection() === 'bottom' &&
             <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
                         size={this.getCategoriesSize()}/>}
 
-            <Circle size={this.getTitleSize()} expand={this.state.timeExpanded} width={Period.getDefaultWidth()}
-                    text={'Test Title'} onExpanded={this.handleCircleExpanded}/>
+            <Circle size={this.getTitleSize()} expand={this.state.timeExpanded} width={this.getContentWidth()}
+                    text={this.props.data.getTitle()} onExpanded={this.handleCircleExpanded}
+                    color={this.props.data.getColor()}/>
 
-            {this.getExpand() === 'top' &&
+            {this.getExpandDirection() === 'top' &&
             <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
-                        size={this.getCategoriesSize()}/>}
+                        size={this.getCategoriesSize()} data={this.props.data.getCategories()}/>}
 
           </PeriodTime>
-          <PeriodLine size={this.getTitleSize()}/>
+          <PeriodLine size={this.getTitleSize()} color={this.props.data.getColor()} lineWidth={this.props.lineWidth}/>
         </div>
     );
   }
@@ -78,22 +75,37 @@ export default class Period extends React.Component {
   getCategoriesOffset() {
     return {
       left: this.getTitleSize(),
-      top: this.getExpand() === 'top' ? this.getTitleSize() : `calc(${PeriodTime.getDefaultHeight()} - ${this.getTitleSize()})`
+      top: this.getExpandDirection() === 'top' ? this.getTitleSize() : `calc(${this.getContentHeight()} - ${this.getTitleSize()})`
     }
   }
 
   getCategoriesSize() {
     return {
-      height: `calc(${PeriodTime.getDefaultHeight()} - ${this.getTitleSize()})`,
-      width: `calc(${Period.getDefaultWidth()} - ${this.getTitleSize()})`
+      height: `calc(${this.getContentHeight()} - ${this.getTitleSize()})`,
+      width: `calc(${this.getContentWidth()} - ${this.getTitleSize()})`
     }
   }
 
-  getTitleSize() {
-    return '28px';
+
+  getExpandDirection() {
+    return this.props.expandDirection;
   }
 
-  getExpand() {
-    return 'bottom';
+  /*---------------------Properties with default value---------------------------*/
+
+  getLineWidth() {
+    return this.props.lineWidth || '50px';
+  }
+
+  getTitleSize() {
+    return this.props.titleSize || '28px';
+  }
+
+  getContentHeight() {
+    return this.props.contentHeight || '300px';
+  }
+
+  getContentWidth() {
+    return this.props.contentWidth || '500px';
   }
 }

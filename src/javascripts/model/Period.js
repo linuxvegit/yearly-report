@@ -42,6 +42,13 @@ export default class Period {
   }
 
   /**
+   * @return {string}
+   */
+  getColor() {
+    return this.color;
+  }
+
+  /**
    * @returns {Category[]}
    */
   getCategories() {
@@ -49,7 +56,7 @@ export default class Period {
   }
 
   /**
-   * @returns {{title: string, time: string, categories: {title: string, achievements: {title: string, images: string[]}[]}[]}}
+   * @return {{title: string, time: string, categories: {title: string, images: string[]}[]}}
    */
   toJSON() {
     return {

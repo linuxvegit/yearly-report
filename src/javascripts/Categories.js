@@ -4,9 +4,10 @@ import '../stylesheets/categories.less';
 
 /**
  * Properties
+ * {!Category[]} data
  * {'top'|'bottom'} expand
- * {left: string, top: string} offset e.g. {left: '16px'}
- * {height: string, width: string} size e.g. {height: '100px'}
+ * {left: string, top: string} offset e.g. {left: '16px'} default {left: '0', top: '0'}
+ * {height: string, width: string} size e.g. {height: '100px'} default {height: '0', width: '0'}
  */
 export default class Categories extends React.Component {
   constructor(props) {
@@ -16,8 +17,11 @@ export default class Categories extends React.Component {
   render() {
     return (
         <div className={'categories'} style={this.getStyle()}>
-          <Category text={'Test Category'}/>
-          <Category text={'Test Category Image'} images={['1', '2']}/>
+          {
+            this.props.data.map(category => (
+                <Category text={category.getTitle()} images={category.getImages()}/>
+            ))
+          }
         </div>
     );
   }

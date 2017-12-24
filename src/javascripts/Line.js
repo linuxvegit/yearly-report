@@ -3,28 +3,29 @@ import '../stylesheets/line.less';
 
 /**
  * Properties
- * {string} width e.g. '50px'
- * {string} color e.g. 'red' or '#333'
+ * {string} width e.g. '50px' default '50px'
+ * {string} color e.g. 'red' or '#333' default 'red'
  */
 export default class Line extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  static getDefaultWidth() {
-    return '50px';
-  }
-
-  static getDefaultColor() {
-    return 'red';
-  }
-
   render() {
     return (
         <div className={'line'} style={{
-          width: this.props.width || Line.getDefaultWidth(),
-          background: this.props.color || Line.getDefaultColor()
+          width: this.getWidth(),
+          background: this.getColor()
         }}/>
     );
+  }
+
+  /*---------------------Properties with default value---------------------------*/
+  getWidth() {
+    return this.props.width || '50px';
+  }
+
+  getColor() {
+    return this.props.color || 'red';
   }
 }

@@ -1,14 +1,6 @@
 import React from 'react';
 import '../stylesheets/pic-browser.less';
 
-// TODO only for test, remove them
-import img1 from '../images/1.png';
-import img2 from '../images/2.png';
-import img3 from '../images/3.png';
-import img4 from '../images/4.png';
-import img5 from '../images/5.png';
-import img6 from '../images/6.png';
-
 /**
  * Properties
  * {string[]} images
@@ -61,8 +53,7 @@ export default class PicBrowser extends React.Component {
   }
 
   getImages() {
-    // TODO only for test, remove it
-    return [img1, img2, img3, img4, img5, img6];
+    return this.props.images || [];
   }
 
   getImageClass(index) {

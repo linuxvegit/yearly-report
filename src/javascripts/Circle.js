@@ -4,11 +4,11 @@ import '../stylesheets/circle.less';
 
 /**
  * Properties
- * {string} color
  * {boolean} expand
- * {string} size
- * {string} width
  * {string} text
+ * {string} color e.g. 'red' or '#333' default 'red'
+ * {string} size e.g. '25px' default '28px'
+ * {string} width e.g. '100px' default '100px'
  *
  * Events
  * onExpanded
@@ -18,18 +18,9 @@ export default class Circle extends React.Component {
     super(props);
   }
 
-  static getDefaultColor() {
-    return 'red';
-  }
-
-  static getDefaultSize() {
-    return '28px';
-  }
-
   render() {
-    let sizeStr = String(this.props.size || Circle.getDefaultSize());
-    let size = SizeUtil.getValue(sizeStr);
-    let unit = SizeUtil.getUnit(sizeStr) || 'px';
+    let size = SizeUtil.getValue(this.getSize());
+    let unit = SizeUtil.getUnit(this.getSize()) || 'px';
 
     if (this.props.expand && this.props.onExpanded) {
       setTimeout(() => this.props.onExpanded(), 300);
@@ -52,10 +43,10 @@ export default class Circle extends React.Component {
       minHeight: size + unit,
       minWidth: size + unit,
       borderRadius: (size / 2) + unit,
-      background: this.props.color || Circle.getDefaultColor()
+      background: this.getColor()
     };
     if (this.props.expand) {
-      style.width = this.props.width;
+      style.width = this.getWidth();
     }
     return style;
   }
@@ -85,5 +76,17 @@ export default class Circle extends React.Component {
     };
   }
 
+  /*---------------------Properties with default value---------------------------*/
+  getColor() {
+    return this.props.color || 'red';
+  }
+
+  getSize() {
+    return this.props.size || '28px';
+  }
+
+  getWidth() {
+    return this.props.width || '100px';
+  }
 
 }

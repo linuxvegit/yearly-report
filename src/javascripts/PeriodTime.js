@@ -4,11 +4,11 @@ import '../stylesheets/period-time.less';
 
 /**
  * Properties
- * {string} height e.g. '100px' the height after expand
- * {string} size   e.g. '25px'  the size(height) of child component title
  * {'top'|'bottom'} expand      the direction of expand
- * {string} color  e.g. 'red' or '#333' the color left line
  * {string} text   e.g. 'Some Title' the title to be shown beside left line
+ * {string} color  e.g. 'red' or '#333' default 'red' the color left line
+ * {string} height e.g. '100px' default '300px' the height after expand
+ * {string} size   e.g. '25px' default '28px'  the size(height) of child component title
  *
  * Events
  * onExpanded
@@ -16,10 +16,6 @@ import '../stylesheets/period-time.less';
 export default class PeriodTime extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  static getDefaultHeight() {
-    return '300px';
   }
 
   render() {
@@ -39,7 +35,7 @@ export default class PeriodTime extends React.Component {
   }
 
   getStyle() {
-    const height = this.props.height || PeriodTime.getDefaultHeight();
+    const height = this.getHeight();
     let style = {};
 
     if (this.isExpand()) {
@@ -50,25 +46,23 @@ export default class PeriodTime extends React.Component {
       }
     } else {
       style = {
-        height: this.props.size || 'auto',
+        height: this.getSize() || 'auto',
         top: '0',
         bottom: '0'
       }
     }
 
-    if (this.props.size && this.props.color) {
-      const size = SizeUtils.getValue(this.props.size) / 2 + SizeUtils.getUnit(this.props.size);
-      style.backgroundImage = `linear-gradient(90deg, transparent calc(${size} - 1px), ${this.props.color} calc(${size} - 1px), ${this.props.color} calc(${size} + 1px), transparent calc(${size} + 1px))`;
-    }
+    const size = SizeUtils.getValue(this.getSize()) / 2 + (SizeUtils.getUnit(this.getSize()) || 'px');
+    style.backgroundImage = `linear-gradient(90deg, transparent calc(${size} - 1px), ${this.getColor()} calc(${size} - 1px), ${this.getColor()} calc(${size} + 1px), transparent calc(${size} + 1px))`;
 
     return style;
   }
 
   getTimeStyle() {
-    const size = SizeUtils.getValue(this.props.size) || 0;
-    const unit = SizeUtils.getUnit(this.props.size) || 'px';
-    const height = SizeUtils.getValue(this.props.height || PeriodTime.getDefaultHeight());
-    const heightUnit = SizeUtils.getUnit(this.props.height || PeriodTime.getDefaultHeight());
+    const size = SizeUtils.getValue(this.getSize()) || 0;
+    const unit = SizeUtils.getUnit(this.getSize()) || 'px';
+    const height = SizeUtils.getValue(this.getHeight());
+    const heightUnit = SizeUtils.getUnit(this.getHeight()) || 'px';
     const width = `calc(${height + heightUnit} - ${size + unit})`;
     return {
       width: width,
@@ -82,5 +76,17 @@ export default class PeriodTime extends React.Component {
     return this.props.expand === 'top' || this.props.expand === 'bottom';
   }
 
+  /*---------------------Properties with default value---------------------------*/
+  getColor() {
+    return this.props.color || 'red';
+  }
+
+  getHeight() {
+    return this.props.height || '300px';
+  }
+
+  getSize() {
+    return this.props.size || '28px';
+  }
 
 }

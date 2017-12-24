@@ -1,5 +1,3 @@
-import Achievement from './Achievement';
-
 export default class Category {
   constructor(data) {
     /**
@@ -9,10 +7,10 @@ export default class Category {
     this.title = data['title'] || '';
 
     /**
-     * @type {Achievement[]}
+     * @type {string[]}
      * @private
      */
-    this.achievements = (data['achievements'] || []).map(achievement => new Achievement(achievement));
+    this.images = data['images'] || [];
   }
 
   /**
@@ -23,19 +21,20 @@ export default class Category {
   }
 
   /**
-   * @returns {Achievement[]}
+   * @return {string[]}
    */
-  getAchievements() {
-    return this.achievements;
+  getImages() {
+    return this.images;
   }
 
+
   /**
-   * @returns {{title: string, achievements: {title: string, images: string[]}[]}}
+   * @return {{title: string, images: string[]}}
    */
   toJSON() {
     return {
       'title': this.title,
-      'achievements': this.achievements.map(achievement => achievement.toJSON())
+      'images': this.images
     }
   }
 }
