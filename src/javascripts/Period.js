@@ -5,6 +5,10 @@ import PeriodTime from './PeriodTime';
 import Categories from './Categories';
 import '../stylesheets/period.less';
 
+/**
+ * Properties
+ *
+ */
 export default class Period extends React.Component {
   constructor(props) {
     super(props);

@@ -15,6 +15,12 @@ export default class Period {
     this.time = data['time'] || '';
 
     /**
+     * @type {string}
+     * @private
+     */
+    this.color = data['color'] || 'red';
+
+    /**
      * @type {Category[]}
      * @private
      */
