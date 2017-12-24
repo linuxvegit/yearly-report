@@ -18,14 +18,16 @@ export default class PicIcon extends React.Component {
     this.handleBrowserClose = this.handleBrowserClose.bind(this);
   }
 
-  handleIconClick() {
+  handleIconClick(e) {
     this.setState({
       showBrowser: true
     });
+    e.stopPropagation();
   }
 
-  handleBrowserClose() {
+  handleBrowserClose(e) {
     this.setState(pre => pre.showBrowser ? {showBrowser: false} : {});
+    e.stopPropagation();
   }
 
   render() {

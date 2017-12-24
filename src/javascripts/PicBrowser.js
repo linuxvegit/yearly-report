@@ -34,6 +34,7 @@ export default class PicBrowser extends React.Component {
     } else if (classes.includes('right-picture')) {
       this.goRight();
     }
+    e.stopPropagation();
   }
 
   goLeft() {
