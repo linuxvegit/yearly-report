@@ -1,25 +1,47 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import PicBrowser from './PicBrowser';
 import icon from '../images/pic.svg';
 import '../stylesheets/pic-icon.less';
 
+/**
+ * Properties
+ * {string} size e.g. '25px' the size of the picture icon
+ */
 export default class PicIcon extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showBrowser: false
+    };
+
+    this.handleIconClick = this.handleIconClick.bind(this);
+    this.handleBrowserClose = this.handleBrowserClose.bind(this);
   }
 
-  componentDidMount() {
-
+  handleIconClick() {
+    this.setState({
+      showBrowser: true
+    });
   }
 
-  componentWillUnmount() {
-
+  handleBrowserClose() {
+    this.setState(pre => pre.showBrowser ? {showBrowser: false} : {});
   }
 
   render() {
     return (
-        <img src={icon} className="pic-icon" alt="Images"/>
+        <div>
+          <img src={icon} className="pic-icon" alt="Images" style={this.getIconStyle()} onClick={this.handleIconClick}/>
+          {this.state.showBrowser && <PicBrowser onClose={this.handleBrowserClose}/>}
+        </div>
     );
+  }
+
+  getIconStyle() {
+    const {size = '25px'} = this.props;
+    return {
+      width: size,
+      height: size
+    };
   }
 };

@@ -54,14 +54,16 @@ export default class Period extends React.Component {
           <PeriodTime size={this.getTitleSize()} expand={this.state.timeExpand} color={Circle.getDefaultColor()}
                       onExpanded={this.handleTimeExpanded} text={'test period'}>
 
+            {this.getExpand() === 'bottom' &&
             <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
-                        size={this.getCategoriesSize()}/>
+                        size={this.getCategoriesSize()}/>}
 
             <Circle size={this.getTitleSize()} expand={this.state.timeExpanded} width={Period.getDefaultWidth()}
                     text={'Test Title'} onExpanded={this.handleCircleExpanded}/>
 
+            {this.getExpand() === 'top' &&
             <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
-                        size={this.getCategoriesSize()}/>
+                        size={this.getCategoriesSize()}/>}
 
           </PeriodTime>
           <PeriodLine size={this.getTitleSize()}/>
@@ -88,6 +90,6 @@ export default class Period extends React.Component {
   }
 
   getExpand() {
-    return 'top';
+    return 'bottom';
   }
 }

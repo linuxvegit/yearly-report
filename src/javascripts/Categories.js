@@ -1,4 +1,5 @@
 import React from 'react';
+import Category from './Category';
 import '../stylesheets/categories.less';
 
 /**
@@ -15,36 +16,8 @@ export default class Categories extends React.Component {
   render() {
     return (
         <div className={'categories'} style={this.getStyle()}>
-          {`This is a very long text
-          Contineru
-          s
-          fa
-          d
-          fa
-          df
-          ad
-          f
-          a
-          df
-          a
-          df
-          a
-          df
-          a
-          sf
-          a
-          dsf
-
-          dfasd
-          f
-          asd
-          f
-          adf
-          adffffffffffffffffffffffffffffffffffffffffffffa
-          sf
-          as
-          df
-          a`}
+          <Category text={'Test Category'}/>
+          <Category text={'Test Category Image'} images={['1', '2']}/>
         </div>
     );
   }
