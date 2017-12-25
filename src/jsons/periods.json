@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Test Period Title 1",
+    "time": "Test Period Time 1",
+    "color": "blue",
+    "categories": [
+      {
+        "title": "Test Category 1.1"
+      },
+      {
+        "title": "Test Category With Pics 1.2",
+        "images": ["1", "2"]
+      }
+    ]
+  },
+  {
+    "title": "Test Period Title",
+    "time": "Test Period Time",
+    "color": "green",
+    "categories": [
+      {
+        "title": "Test Category 2.1"
+      },
+      {
+        "title": "Test Category With Pics 2.2",
+        "images": ["1", "2"]
+      }
+    ]
+  }
+]

@@ -18,8 +18,8 @@ export default class Categories extends React.Component {
     return (
         <div className={'categories'} style={this.getStyle()}>
           {
-            this.props.data.map(category => (
-                <Category text={category.getTitle()} images={category.getImages()}/>
+            this.props.data.map((category, index) => (
+                <Category text={category.getTitle()} images={category.getImages()} key={index}/>
             ))
           }
         </div>

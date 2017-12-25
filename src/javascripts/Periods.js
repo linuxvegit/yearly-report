@@ -1,48 +1,52 @@
 import React from 'react';
 import Period from './Period';
-import PeriodModel from './model/Period';
 import '../stylesheets/periods.less';
 
+/**
+ * Properties
+ * {!Period[]} data
+ * {!number} index
+ * {string} lineWidth e.g. `50px` default '50px'
+ * {string} contentWidth e.g. `100px` default '500px'
+ * {string} contentHeight e.g. `200px` default '300px'
+ * {string} titleSize e.g. '25px'  default '28px'
+ */
 export default class Periods extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      expand: false
-    }
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    console.log('click');
-    this.setState(pre => pre.expand ? {} : {expand: true});
   }
 
   render() {
     return (
-        <div className={'periods'} onClick={this.handleClick}>
-          <Period data={Periods.getPeriod()} expandDirection={'top'} expand={this.state.expand} lineWidth={'100px'}
-                  contentWidth={'300px'} contentHeight={'150px'} titleSize={'28px'}/>
-        </div>
+      <div className={'periods'}>
+        {this.props.data.map((period, index) => (
+          <Period data={period} expandDirection={Periods.getExpandDirection(index)} expand={index <= this.props.index}
+                  lineWidth={this.getLineWidth()} contentWidth={this.getContentWidth()}
+                  contentHeight={this.getContentHeight()} titleSize={this.getTitleSize()} key={index}/>
+        ))}
+      </div>
     );
   }
 
-  // TODO for test
-  static getPeriod() {
-    return new PeriodModel({
-      'title': 'Test Period Title',
-      'time': 'Test Period Time',
-      'color': 'blue',
-      'categories': [
-        {
-          'title': 'Test Category'
-        },
-        {
-          'title': 'Test Category With Pics',
-          'images': ['1', '2']
-        }
-      ]
-    });
+  static getExpandDirection(index) {
+    return index % 2 === 0 ? 'top' : 'bottom'
+  }
+
+  /*---------------------Properties with default value---------------------------*/
+
+  getLineWidth() {
+    return this.props.lineWidth || '50px';
+  }
+
+  getTitleSize() {
+    return this.props.titleSize || '28px';
+  }
+
+  getContentHeight() {
+    return this.props.contentHeight || '300px';
+  }
+
+  getContentWidth() {
+    return this.props.contentWidth || '500px';
   }
 }

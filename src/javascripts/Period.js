@@ -56,7 +56,7 @@ export default class Period extends React.Component {
 
             {this.getExpandDirection() === 'bottom' &&
             <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
-                        size={this.getCategoriesSize()}/>}
+                        size={this.getCategoriesSize()} data={this.props.data.getCategories()}/>}
 
             <Circle size={this.getTitleSize()} expand={this.state.timeExpanded} width={this.getContentWidth()}
                     text={this.props.data.getTitle()} onExpanded={this.handleCircleExpanded}
