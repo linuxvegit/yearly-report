@@ -5,13 +5,13 @@
     "color": "#C3895B",
     "categories": [
       {
-        "title": "Test Category 1.1"
+        "title": "ESS File Password Concept Design"
       },
       {
-        "title": "Test Category With Pics 1.2",
+        "title": "ESS File Password Frontend Implementation",
         "images": [
-          "1",
-          "2"
+          "images/password-1.png",
+          "images/password-2.png"
         ]
       }
     ]
@@ -22,14 +22,7 @@
     "color": "#3DB0B3",
     "categories": [
       {
-        "title": "Test Category 2.1"
-      },
-      {
-        "title": "Test Category With Pics 2.2",
-        "images": [
-          "1",
-          "2"
-        ]
+        "title": "Enterprise Presentation Concept Design"
       }
     ]
   },
@@ -39,13 +32,17 @@
     "color": "#A7BF75",
     "categories": [
       {
-        "title": "Test Category 2.1"
+        "title": "Exception Handling Improvement"
       },
       {
-        "title": "Test Category With Pics 2.2",
+        "title": "Server Error UX Improvement",
         "images": [
-          "1",
-          "2"
+          "images/error-dialog.png",
+          "images/ess-error-1.png",
+          "images/ess-error-2.png",
+          "images/ess-error-3.png",
+          "images/ess-error-4.png",
+          "images/ess-warning.png"
         ]
       }
     ]
@@ -56,7 +53,10 @@
     "color": "#F6A147",
     "categories": [
       {
-        "title": "Test Category 2.1"
+        "title": "Scheduler Side Menu Refactor",
+        "images": [
+
+        ]
       },
       {
         "title": "Test Category With Pics 2.2",
@@ -77,7 +77,10 @@
       },
       {
         "title": "Test Category With Pics 2.2",
-        "images": ["1", "2"]
+        "images": [
+          "1",
+          "2"
+        ]
       }
     ]
   },
@@ -91,7 +94,10 @@
       },
       {
         "title": "Test Category With Pics 2.2",
-        "images": ["1", "2"]
+        "images": [
+          "1",
+          "2"
+        ]
       }
     ]
   }

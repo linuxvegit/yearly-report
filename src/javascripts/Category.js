@@ -17,7 +17,7 @@ export default class Category extends React.Component {
         <div className={'category'}>
           <div>
             <label>{this.props.text}</label>
-            {(this.props.images || []).length > 0 && <PicIcon size={'1rem'}/>}
+            {(this.props.images || []).length > 0 && <PicIcon size={'1rem'} images={this.props.images}/>}
           </div>
         </div>
     );

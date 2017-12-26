@@ -17,6 +17,11 @@ export default class PicBrowser extends React.Component {
     };
 
     this.handlePicClick = this.handlePicClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.stopPropagation();
   }
 
   handlePicClick(e) {
@@ -39,16 +44,16 @@ export default class PicBrowser extends React.Component {
 
   render() {
     return (
-        <div className={'pic-browser'}>
-          <div className={'pic-browser-content'}>
-            {this.getImages().map((image, index) => (
-                <div className={this.getImageClass(index)} onClick={this.handlePicClick} key={index}>
-                  <img src={image} alt="image" className={'picture-img'}/>
-                </div>
-            ))}
-          </div>
-          <div className={'pic-browser-close'} onClick={this.props.onClose}>X</div>
+      <div className={'pic-browser'} onClick={this.handleClick}>
+        <div className={'pic-browser-content'}>
+          {this.getImages().map((image, index) => (
+            <div className={this.getImageClass(index)} onClick={this.handlePicClick} key={index}>
+              <img src={image} alt="image" className={'picture-img'}/>
+            </div>
+          ))}
         </div>
+        <div className={'pic-browser-close'} onClick={this.props.onClose}>X</div>
+      </div>
     );
   }
 

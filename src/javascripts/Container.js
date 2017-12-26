@@ -141,7 +141,7 @@ export default class Container extends React.Component {
   }
 
   static getContentHeight() {
-    return 700;
+    return 500;
   }
 
   static getTitleSizeInPx() {
