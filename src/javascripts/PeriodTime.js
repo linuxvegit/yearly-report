@@ -24,13 +24,13 @@ export default class PeriodTime extends React.Component {
     }
 
     return (
-        <div className={'period-time'} style={this.getStyle()}>
-          {this.props.text && this.props.expand === 'bottom' &&
-          <label className={'period-time-text'} style={this.getTimeStyle()}>{this.props.text}</label>}
-          {this.props.children}
-          {this.props.text && this.props.expand === 'top' &&
-          <label className={'period-time-text'} style={this.getTimeStyle()}>{this.props.text}</label>}
-        </div>
+      <div className={'period-time'} style={this.getStyle()}>
+        {this.props.text && this.props.expand === 'bottom' &&
+        <label className={'period-time-text'} style={this.getTimeStyle()}>{this.props.text}</label>}
+        {this.props.children}
+        {this.props.text && this.props.expand === 'top' &&
+        <label className={'period-time-text'} style={this.getTimeStyle()}>{this.props.text}</label>}
+      </div>
     )
   }
 

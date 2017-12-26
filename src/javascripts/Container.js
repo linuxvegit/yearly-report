@@ -2,7 +2,10 @@ import React from 'react';
 import Starter from './Starter';
 import Periods from './Periods';
 import PeriodModel from './model/Period';
+import Terminator from "./Terminator";
+import ColorUtils from "./util/ColorUtils";
 import periodsData from '../jsons/periods';
+import terminatorData from '../jsons/terminator';
 import '../stylesheets/container.less';
 
 export default class Container extends React.Component {
@@ -42,18 +45,23 @@ export default class Container extends React.Component {
   }
 
   setPeriodIndex() {
-    this.setState(pre => ({periodIndex: pre.targetIndex}));
+    this.setState(pre => ({periodIndex: Math.max(pre.targetIndex, pre.periodIndex)}));
   }
 
   render() {
+    document.body.style.background = ColorUtils.lightenDarkenColor(this.getPeriodColor(), 80);
     return (
       <div className="container" style={this.getStyle()} onClick={this.handleClick}
            onContextMenu={this.handleRightClick}>
-        <Starter text='Hello!' lineWidth={Container.getStarterWidthInPx()} pointSize={Container.getTitleSizeInPx()}
-                 onShrink={this.handleStarterShrink}/>
+        <Starter text='Hello!' lineWidth={Container.getStarterWidthInPx()} pointSize={Container.getTerminatorSizeInPx()}
+                 onShrink={this.handleStarterShrink} color={Container.getStarterColor()}/>
         <Periods data={Container.getPeriods()} index={this.state.periodIndex}
                  lineWidth={Container.getPeriodLineWidthInPx()} contentWidth={Container.getContentWidthInPx()}
                  contentHeight={Container.getContentHeightInPx()} titleSize={Container.getTitleSizeInPx()}/>
+        <Terminator text={terminatorData.text} image={terminatorData.image.src}
+                    lineWidth={Container.getStarterWidthInPx()} pointSize={Container.getTerminatorSizeInPx()}
+                    expand={Math.min(this.state.periodIndex, this.state.targetIndex) >= Container.getPeriodSize()}
+                    color={Container.getTerminatorColor()}/>
       </div>
     );
   }
@@ -77,11 +85,22 @@ export default class Container extends React.Component {
   getLeftInPx() {
     const index = this.state.targetIndex;
     if (index < 0) {
-      return `calc(50vw - ${Container.getTitleSize() / 2}px)`;
+      return `calc(50vw - ${Container.getTerminatorSize() / 2}px)`;
     } else if (index >= Container.getPeriodSize()) {
-      return `calc(50vw - ${Container.getTitleSize() * 1.5 + Container.getStarterWidth() * 2 + Container.getPeriodSize() * (Container.getPeriodLineWidth() + Container.getTitleSize())}px)`;
+      return `calc(50vw - ${Container.getTitleSize() * 0.5 + Container.getTerminatorSize() + Container.getStarterWidth() * 2 + Container.getPeriodSize() * (Container.getPeriodLineWidth() + Container.getTitleSize())}px)`;
     } else {
-      return `calc(50vw - ${Container.getTitleSize() + Container.getStarterWidth() + index * (Container.getTitleSize() + Container.getPeriodLineWidth()) + 0.5 * (Container.getTitleSize() + Container.getContentWidth())}px)`
+      return `calc(50vw - ${Container.getTerminatorSize() + Container.getStarterWidth() + index * (Container.getTitleSize() + Container.getPeriodLineWidth()) + 0.5 * (Container.getTitleSize() + Container.getContentWidth())}px)`
+    }
+  }
+
+  getPeriodColor() {
+    const index = this.state.targetIndex;
+    if (index < 0) {
+      return Container.getStarterColor();
+    } else if (index >= Container.getPeriodSize()) {
+      return Container.getTerminatorColor();
+    } else {
+      return Container.getPeriods()[index].getColor();
     }
   }
 
@@ -122,7 +141,7 @@ export default class Container extends React.Component {
   }
 
   static getContentHeight() {
-    return 600;
+    return 700;
   }
 
   static getTitleSizeInPx() {
@@ -131,5 +150,21 @@ export default class Container extends React.Component {
 
   static getTitleSize() {
     return 84;
+  }
+
+  static getTerminatorSizeInPx() {
+    return this.getTerminatorSize() + 'px';
+  }
+
+  static getTerminatorSize() {
+    return 56;
+  }
+
+  static getStarterColor() {
+    return '#C3895B';
+  }
+
+  static getTerminatorColor() {
+    return '#5A8BAB';
   }
 }

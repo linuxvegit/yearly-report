@@ -45,9 +45,11 @@ export default class Starter extends React.Component {
 
   getPointStyle() {
     return {
-      width: this.state.original ? '100vw' : this.getPointSize(),
-      height: this.state.original ? '100vh' : this.getPointSize(),
-      borderRadius: this.state.original ? '0' : `${SizeUtils.getValue(this.getPointSize())}${SizeUtils.getUnit(this.getPointSize()) || 'px'}`,
+      width: this.state.original ? '150vw' : this.getPointSize(),
+      height: this.state.original ? '150vw' : this.getPointSize(),
+      borderRadius: this.state.original ? '75vw' : `${SizeUtils.getValue(this.getPointSize())}${SizeUtils.getUnit(this.getPointSize()) || 'px'}`,
+      marginLeft: this.state.original ? '-25vw' : '0',
+      marginTop: this.state.original ? 'calc(50vh - 75vw)':'0',
       background: this.getColor()
     };
   }

@@ -1,22 +1,90 @@
 [
   {
-    "title": "Test Period Title 1",
-    "time": "Test Period Time 1",
-    "color": "blue",
+    "title": "Enterprise Spreadsheet",
+    "time": "Jan. 2017",
+    "color": "#C3895B",
     "categories": [
       {
         "title": "Test Category 1.1"
       },
       {
         "title": "Test Category With Pics 1.2",
+        "images": [
+          "1",
+          "2"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Enterprise Spreadsheet",
+    "time": "Feb. and Mar.",
+    "color": "#3DB0B3",
+    "categories": [
+      {
+        "title": "Test Category 2.1"
+      },
+      {
+        "title": "Test Category With Pics 2.2",
+        "images": [
+          "1",
+          "2"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Enterprise Spreadsheet",
+    "time": "Apr. 2017",
+    "color": "#A7BF75",
+    "categories": [
+      {
+        "title": "Test Category 2.1"
+      },
+      {
+        "title": "Test Category With Pics 2.2",
+        "images": [
+          "1",
+          "2"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "HUE Scheduler",
+    "time": "17.06",
+    "color": "#F6A147",
+    "categories": [
+      {
+        "title": "Test Category 2.1"
+      },
+      {
+        "title": "Test Category With Pics 2.2",
+        "images": [
+          "1",
+          "2"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "HUE Scheduler",
+    "time": "17.09",
+    "color": "#F66178",
+    "categories": [
+      {
+        "title": "Test Category 2.1"
+      },
+      {
+        "title": "Test Category With Pics 2.2",
         "images": ["1", "2"]
       }
     ]
   },
   {
-    "title": "Test Period Title",
-    "time": "Test Period Time",
-    "color": "green",
+    "title": "HUE Scheduler",
+    "time": "17.12",
+    "color": "#5A8BAB",
     "categories": [
       {
         "title": "Test Category 2.1"

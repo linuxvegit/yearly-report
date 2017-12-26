@@ -27,12 +27,12 @@ export default class Circle extends React.Component {
     }
 
     return (
-        <div className='circle' style={this.getCircleStyle(size, unit)}>
-          <div className='inner-circle' style={Circle.getInnerCircleStyle(size, unit)}>
-            <div className='inner-point' style={Circle.getInnerPointStyle(size, unit)}/>
-          </div>
-          {this.props.expand && this.props.text != null && <label className="circle-text">{this.props.text}</label>}
+      <div className='circle' style={this.getCircleStyle(size, unit)}>
+        <div className='inner-circle' style={Circle.getInnerCircleStyle(size, unit)}>
+          <div className='inner-point' style={Circle.getInnerPointStyle(size, unit)}/>
         </div>
+        {this.props.expand && this.props.text != null && <label className="circle-text">{this.props.text}</label>}
+      </div>
     );
   }
 
