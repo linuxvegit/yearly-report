@@ -53,16 +53,26 @@
     "color": "#F6A147",
     "categories": [
       {
-        "title": "Scheduler Side Menu Refactor",
+        "title": "Side Menu Refactor",
         "images": [
-
+          "images/old-scheduler-side-menu.png",
+          "images/new-scheduler-side-menu-1.png",
+          "images/new-scheduler-side-menu-2.png"
         ]
       },
       {
-        "title": "Test Category With Pics 2.2",
+        "title": "Group Week View",
         "images": [
-          "1",
-          "2"
+          "images/group-view-1.png",
+          "images/group-view-2.png",
+          "images/group-view-3.png"
+        ]
+      },
+      {
+        "title": "Business Date Time",
+        "images": [
+          "images/business-days.png",
+          "images/business-month.png"
         ]
       }
     ]
@@ -73,13 +83,37 @@
     "color": "#F66178",
     "categories": [
       {
-        "title": "Test Category 2.1"
+        "title": "Timeline Portal Page Concept Design"
       },
       {
-        "title": "Test Category With Pics 2.2",
+        "title": "Event Search",
         "images": [
-          "1",
-          "2"
+          "images/event-search.png"
+        ]
+      },
+      {
+        "title": "Event Filter",
+        "images": [
+          "images/filter-1.png",
+          "images/filter-2.png",
+          "images/filter-3.png"
+        ]
+      },
+      {
+        "title": "Event Highlight",
+        "images": [
+          "images/timeline-feed.png",
+          "images/highlight.png"
+        ]
+      },
+      {
+        "title": "Facility Restriction",
+        "images": [
+          "images/facility-restriction.png",
+          "images/facility-suggestion.png",
+          "images/facility-popover.png",
+          "images/facility-order.png",
+          "images/facility-error-detail.png"
         ]
       }
     ]
@@ -90,14 +124,18 @@
     "color": "#5A8BAB",
     "categories": [
       {
-        "title": "Test Category 2.1"
+        "title": "Holiday Improvement",
+        "images": [
+          "images/holidays.png",
+          "images/holiday-subscribe.png",
+          "images/holiday-flags.png"
+        ]
       },
       {
-        "title": "Test Category With Pics 2.2",
-        "images": [
-          "1",
-          "2"
-        ]
+        "title": "Event Fetch Web API Improvement"
+      },
+      {
+        "title": "Event Category Web APIs"
       }
     ]
   }

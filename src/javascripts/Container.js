@@ -53,7 +53,7 @@ export default class Container extends React.Component {
     return (
       <div className="container" style={this.getStyle()} onClick={this.handleClick}
            onContextMenu={this.handleRightClick}>
-        <Starter text='Hello!' lineWidth={Container.getStarterWidthInPx()} pointSize={Container.getTerminatorSizeInPx()}
+        <Starter text='Recital 2017!' lineWidth={Container.getStarterWidthInPx()} pointSize={Container.getTerminatorSizeInPx()}
                  onShrink={this.handleStarterShrink} color={Container.getStarterColor()}/>
         <Periods data={Container.getPeriods()} index={this.state.periodIndex}
                  lineWidth={Container.getPeriodLineWidthInPx()} contentWidth={Container.getContentWidthInPx()}

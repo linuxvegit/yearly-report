@@ -1,5 +1,6 @@
 import React from 'react';
 import SizeUtils from './util/SizeUtils';
+import ColorUtils from './util/ColorUtils';
 import '../stylesheets/period-time.less';
 
 /**
@@ -36,20 +37,22 @@ export default class PeriodTime extends React.Component {
 
   getStyle() {
     const height = this.getHeight();
-    let style = {};
+    let style = {
+      color: ColorUtils.lightenDarkenColor(this.getColor(), -40),
+    };
 
     if (this.isExpand()) {
-      style = {
+      Object.assign(style, {
         height: height,
         [this.props.expand]: '-' + height,
         justifyContent: this.props.expand === 'top' ? 'flex-start' : 'flex-end'
-      }
+      });
     } else {
-      style = {
+      Object.assign(style, {
         height: this.getSize() || 'auto',
         top: '0',
         bottom: '0'
-      }
+      });
     }
 
     const size = SizeUtils.getValue(this.getSize()) / 2 + (SizeUtils.getUnit(this.getSize()) || 'px');

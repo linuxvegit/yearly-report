@@ -4,6 +4,7 @@ import PeriodLine from './PeriodLine';
 import PeriodTime from './PeriodTime';
 import Categories from './Categories';
 import '../stylesheets/period.less';
+import ColorUtils from "./util/ColorUtils";
 
 /**
  * Properties
@@ -48,27 +49,29 @@ export default class Period extends React.Component {
 
   render() {
     return (
-        <div className={'period'}>
-          <PeriodTime size={this.getTitleSize()} height={this.props.contentHeight}
-                      expand={this.props.expand ? this.getExpandDirection() : ''}
-                      color={this.props.data.getColor()} onExpanded={this.handleTimeExpanded}
-                      text={this.props.data.getTime()}>
+      <div className={'period'}>
+        <PeriodTime size={this.getTitleSize()} height={this.props.contentHeight}
+                    expand={this.props.expand ? this.getExpandDirection() : ''}
+                    color={this.props.data.getColor()} onExpanded={this.handleTimeExpanded}
+                    text={this.props.data.getTime()}>
 
-            {this.getExpandDirection() === 'bottom' &&
-            <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
-                        size={this.getCategoriesSize()} data={this.props.data.getCategories()}/>}
+          {this.getExpandDirection() === 'bottom' &&
+          <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
+                      size={this.getCategoriesSize()} data={this.props.data.getCategories()}
+                      color={ColorUtils.lightenDarkenColor(this.props.data.getColor(), -20)}/>}
 
-            <Circle size={this.getTitleSize()} expand={this.state.timeExpanded} width={this.getContentWidth()}
-                    text={this.props.data.getTitle()} onExpanded={this.handleCircleExpanded}
-                    color={this.props.data.getColor()}/>
+          <Circle size={this.getTitleSize()} expand={this.state.timeExpanded} width={this.getContentWidth()}
+                  text={this.props.data.getTitle()} onExpanded={this.handleCircleExpanded}
+                  color={this.props.data.getColor()}/>
 
-            {this.getExpandDirection() === 'top' &&
-            <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
-                        size={this.getCategoriesSize()} data={this.props.data.getCategories()}/>}
+          {this.getExpandDirection() === 'top' &&
+          <Categories expand={this.state.textExpand} offset={this.getCategoriesOffset()}
+                      size={this.getCategoriesSize()} data={this.props.data.getCategories()}
+                      color={ColorUtils.lightenDarkenColor(this.props.data.getColor(), -20)}/>}
 
-          </PeriodTime>
-          <PeriodLine size={this.getTitleSize()} color={this.props.data.getColor()} lineWidth={this.props.lineWidth}/>
-        </div>
+        </PeriodTime>
+        <PeriodLine size={this.getTitleSize()} color={this.props.data.getColor()} lineWidth={this.props.lineWidth}/>
+      </div>
     );
   }
 

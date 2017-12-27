@@ -1,5 +1,6 @@
 import React from 'react';
 import SizeUtil from './util/SizeUtils';
+import ColorUtils from './util/ColorUtils';
 import '../stylesheets/circle.less';
 
 /**
@@ -28,8 +29,8 @@ export default class Circle extends React.Component {
 
     return (
       <div className='circle' style={this.getCircleStyle(size, unit)}>
-        <div className='inner-circle' style={Circle.getInnerCircleStyle(size, unit)}>
-          <div className='inner-point' style={Circle.getInnerPointStyle(size, unit)}/>
+        <div className='inner-circle' style={this.getInnerCircleStyle(size, unit)}>
+          <div className='inner-point' style={this.getInnerPointStyle(size, unit)}/>
         </div>
         {this.props.expand && this.props.text != null && <label className="circle-text">{this.props.text}</label>}
       </div>
@@ -51,7 +52,7 @@ export default class Circle extends React.Component {
     return style;
   }
 
-  static getInnerCircleStyle(size, unit) {
+  getInnerCircleStyle(size, unit) {
     const width = size / 7;
     const innerSize = size - width * 2;
     const innerContentSize = size - width * 4;
@@ -63,16 +64,18 @@ export default class Circle extends React.Component {
       borderRadius: innerSize / 2 + unit,
       marginLeft: width + unit,
       marginRight: width + unit,
-      borderWidth: width + unit
+      borderWidth: width + unit,
+      borderColor: ColorUtils.lightenDarkenColor(this.getColor(), 80)
     };
   }
 
-  static getInnerPointStyle(size, unit) {
+   getInnerPointStyle(size, unit) {
     const innerSize = size / 7;
     return {
       height: innerSize + unit,
       width: innerSize + unit,
-      borderRadius: innerSize / 2 + unit
+      borderRadius: innerSize / 2 + unit,
+      background: ColorUtils.lightenDarkenColor(this.getColor(), 80)
     };
   }
 
