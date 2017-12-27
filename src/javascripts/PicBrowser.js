@@ -25,6 +25,7 @@ export default class PicBrowser extends React.Component {
       this.props.onClose(e);
     }
     e.stopPropagation();
+    e.preventDefault();
   }
 
   handlePicClick(e) {
@@ -47,7 +48,7 @@ export default class PicBrowser extends React.Component {
 
   render() {
     return (
-      <div className={'pic-browser'} onClick={this.handleClick}>
+      <div className={'pic-browser'} onClick={this.handleClick} onContextMenu={this.handleClick}>
         <div className={'pic-browser-content'}>
           {this.getImages().map((image, index) => (
             <div className={this.getImageClass(index)} onClick={this.handlePicClick} key={index}>
