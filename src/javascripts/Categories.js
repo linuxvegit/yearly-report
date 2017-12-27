@@ -34,7 +34,7 @@ export default class Categories extends React.Component {
       left: left,
       width: width,
       top: this.props.expand === 'bottom' ? '0' : top,
-      height: this.isExpand() ? height : '0'
+      height: this.isExpand() ? `calc(${height} - 16px)` : '0'
     };
   }
 

@@ -68,10 +68,12 @@ export default class PeriodTime extends React.Component {
     const heightUnit = SizeUtils.getUnit(this.getHeight()) || 'px';
     const width = `calc(${height + heightUnit} - ${size + unit})`;
     return {
-      width: width,
+      width: this.props.expand ? width : '0',
       maxWidth: width,
+      fontSize: PeriodTime.getTimeFontSizeInRem(),
+      lineHeight: PeriodTime.getTimeFontSizeInRem(),
       left: `calc(${size + unit} - ${height / 2 + heightUnit} - 1px - 1rem)`,
-      [this.props.expand]: `calc(${height / 2 + heightUnit} - ${size / 2 + unit} - 1rem)`
+      [this.getTimeVPositionAttrName()]: `calc(${height / 2}${heightUnit} - ${size / 2}${unit} - ${PeriodTime.getTimeFontSize() / 2}rem)`
     };
   }
 
@@ -92,4 +94,21 @@ export default class PeriodTime extends React.Component {
     return this.props.size || '28px';
   }
 
+  getTimeVPositionAttrName() {
+    if (this.props.expand === 'top') {
+      return 'bottom';
+    } else if (this.props.expand === 'bottom') {
+      return 'top';
+    } else {
+      return '';
+    }
+  }
+
+  static getTimeFontSize() {
+    return 1.3;
+  }
+
+  static getTimeFontSizeInRem() {
+    return this.getTimeFontSize() + 'rem';
+  }
 }

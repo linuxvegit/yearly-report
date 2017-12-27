@@ -21,6 +21,9 @@ export default class PicBrowser extends React.Component {
   }
 
   handleClick(e) {
+    if (this.props.onClose) {
+      this.props.onClose(e);
+    }
     e.stopPropagation();
   }
 
